@@ -7,7 +7,8 @@ const
 
 let
   x = Math.floor(Math.random() * width),
-  y = Math.floor(Math.random() * height);
+  y = Math.floor(Math.random() * height),
+  keyWord;
 
 with (context) {
   lineJoin = 'round';
@@ -20,25 +21,42 @@ with (context) {
   stroke();
 }
 
-function draw({ key }) {
-  context.beginPath();
-  context.moveTo(x, y);
-  switch (key) {
+function moveDown(keyWord){
+  switch (keyWord) {
     case 'ArrowUp':
-      y -= moveDistance;
+      if (y > 0) {
+        y -= moveDistance;
+      }
       break;
     case 'ArrowDown':
-      y += moveDistance;
+      if (y < height) {
+        y += moveDistance;
+      }
       break;
     case 'ArrowLeft':
-      x -= moveDistance;
+      if (x > 0) {
+        x -= moveDistance;
+      }
       break;
     case 'ArrowRight':
-      x += moveDistance;
+      if (x < width) {
+        x += moveDistance;
+      }
       break;
     default:
       break;
   }
+}
+
+function draw(key) {
+  if (key.key == undefined) {
+    keyWord = key;
+  } else{
+    keyWord = key.key;
+  }
+  context.beginPath();
+  context.moveTo(x, y);
+  moveDown(keyWord);
   context.lineTo(x, y);
   context.stroke();
 }
