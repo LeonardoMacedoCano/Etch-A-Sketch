@@ -3,12 +3,22 @@ const
   context = canvas.getContext('2d'),
   moveDistance = 10,
   height  = canvas.height,
-  width = canvas.width;
+  width = canvas.width,
+  windowWidth = window.innerWidth,
+  windowHeight = window.innerHeight,
+  CONFIG = {
+    height: (windowHeight - 260),
+    width: (((windowHeight - 260) /12) *17),
+  };
 
 let
   x = Math.floor(Math.random() * width),
   y = Math.floor(Math.random() * height),
   keyWord;
+
+for (const key of Object.keys(CONFIG)) {
+  document.documentElement.style.setProperty(`--${key}`, CONFIG[key]);
+}
 
 with (context) {
   lineJoin = 'round';
