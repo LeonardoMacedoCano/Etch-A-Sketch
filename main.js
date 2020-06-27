@@ -19,3 +19,11 @@ with (context) {
   lineTo(x, y);
   stroke();
 }
+
+function keyPress(event) {
+  if (event.key.includes('Arrow')) {
+    event.preventDefault();
+  }
+}
+
+window.addEventListener('keydown', keyPress);
