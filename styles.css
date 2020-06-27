@@ -18,3 +18,9 @@ canvas {
   padding: 2rem;
   max-height: calc(100vh - 4rem);
 }
+
+.canvasBorder {
+  border: 130px solid #C8020B;
+  border-radius: 25px;
+  box-shadow: 0px 8px 6px rgba(0,0,0,0.75);
+}
