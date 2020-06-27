@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #ddd;
+  display: flex;
+  min-height: 100vh;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-height: calc(100vh - 4rem);
+}
