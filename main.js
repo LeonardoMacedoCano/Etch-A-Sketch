@@ -20,9 +20,33 @@ with (context) {
   stroke();
 }
 
+function draw({ key }) {
+  context.beginPath();
+  context.moveTo(x, y);
+  switch (key) {
+    case 'ArrowUp':
+      y -= moveDistance;
+      break;
+    case 'ArrowDown':
+      y += moveDistance;
+      break;
+    case 'ArrowLeft':
+      x -= moveDistance;
+      break;
+    case 'ArrowRight':
+      x += moveDistance;
+      break;
+    default:
+      break;
+  }
+  context.lineTo(x, y);
+  context.stroke();
+}
+
 function keyPress(event) {
   if (event.key.includes('Arrow')) {
     event.preventDefault();
+    draw({ key: event.key });
   }
 }
 
