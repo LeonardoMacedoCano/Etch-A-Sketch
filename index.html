@@ -19,7 +19,26 @@
 
 	<div id="navigation-menu">
 		<ul class="nav">
-
+			<div class="titulo-menu">Etch A Sketch</div>
+			<li>
+				<div class="item-menu">Cor</div>
+				<div class="sub-item-menu">
+					<div class="info-value">
+						<input type="color" id="color" name="clor" value="#000" onchange="alterarValor('color', this.value)">
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item-menu">Cor de fundo</div>
+				<div class="sub-item-menu">
+					<div class="info-value">
+						<input type="color" id="bcolor" name="bcolor" value="#000" onchange="alterarValor('bcolor', this.value)">
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="item-menu"><button class="btnClear">Limpar</button></div>
+			</li>
 		</ul>
 	</div>
 
