@@ -6,9 +6,9 @@ const
   width = canvas.width,
   windowWidth = window.innerWidth,
   windowHeight = window.innerHeight,
-  CONFIG = {
-    height: (windowHeight - 260),
-    width: (((windowHeight - 260) /12) *17),
+  config = {
+    color: "#000",
+    bcolor: "#CAD4D6",
   };
 
 let
@@ -16,8 +16,9 @@ let
   y = Math.floor(Math.random() * height),
   keyWord;
 
-for (const key of Object.keys(CONFIG)) {
-  document.documentElement.style.setProperty(`--${key}`, CONFIG[key]);
+for (const key of Object.keys(config)) {
+  document.documentElement.style.setProperty(`--${key}`, config[key]);
+  document.getElementById(key).value = config[key];
 }
 
 with (context) {
@@ -29,6 +30,14 @@ with (context) {
   moveTo(x, y);
   lineTo(x, y);
   stroke();
+}
+
+function alterarValor(id, valor){
+  if (id == 'color') {
+    config.color = valor;
+  } else if (id == 'bcolor') {
+    document.documentElement.style.setProperty(`--${id}`, valor);
+  }
 }
 
 function moveDown(keyWord){
@@ -68,6 +77,7 @@ function draw(key) {
   context.moveTo(x, y);
   moveDown(keyWord);
   context.lineTo(x, y);
+  context.strokeStyle = config.color;
   context.stroke();
 }
 
