@@ -6,9 +6,9 @@ const
   width = canvas.width,
   windowWidth = window.innerWidth,
   windowHeight = window.innerHeight,
-  config = {
-    color: "#000",
-    bcolor: "#CAD4D6",
+  CONFIG = {
+    height: (windowHeight - 260),
+    width: (((windowHeight - 260) /12) *17),
   };
 
 let
@@ -16,9 +16,8 @@ let
   y = Math.floor(Math.random() * height),
   keyWord;
 
-for (const key of Object.keys(config)) {
-  document.documentElement.style.setProperty(`--${key}`, config[key]);
-  document.getElementById(key).value = config[key];
+for (const key of Object.keys(CONFIG)) {
+  document.documentElement.style.setProperty(`--${key}`, CONFIG[key]);
 }
 
 with (context) {
@@ -30,16 +29,6 @@ with (context) {
   moveTo(x, y);
   lineTo(x, y);
   stroke();
-}
-
-function alterarValor(id, valor){
-  if (id == 'color') {
-    config.color = valor;
-    console.log('color: ' + valor);
-  } else if (id == 'bcolor') {
-    document.documentElement.style.setProperty(`--${id}`, valor);
-    console.log('bcolor: ' + valor);
-  }
 }
 
 function moveDown(keyWord){
@@ -79,8 +68,6 @@ function draw(key) {
   context.moveTo(x, y);
   moveDown(keyWord);
   context.lineTo(x, y);
-  context.strokeStyle = config.color;
-  console.log(config.color);
   context.stroke();
 }
 
@@ -92,34 +79,3 @@ function keyPress(event) {
 }
 
 window.addEventListener('keydown', keyPress);
-
-
-
-$('.open-menu-btn').on('click', function(){
-  if($('body').hasClass('closed-menu')){
-    $('body').removeClass('closed-menu');
-  }else{
-    $('body').addClass('closed-menu');
-  }
-});
-
-$(document).ready(function(e){
-  var windowHeight = window.innerHeight;
-  $('#navigation-menu').css('height', windowHeight + 'px');
-
-  $(document).on('click', '#showMenu', function(){
-    $('#navigation-menu').css('left', '0');
-
-    $('#showMenu, #hideMenu').css('left', '160px');
-    $('#showMenu, #hideMenu').html('<i class="fa fa-chevron-left"></i>');
-    $('#showMenu').attr('id', 'hideMenu');
-  });
-
-  $(document).on('click', '#hideMenu', function(){
-    $('#navigation-menu').css('left', '-160px');
-
-    $('#showMenu, #hideMenu').css('left', '0');
-    $('#showMenu, #hideMenu').html('<i class="fa fa-cog"></i>');
-    $('#hideMenu').attr('id', 'showMenu');
-  });
-});
