@@ -1,6 +1,7 @@
 const
   canvas = document.querySelector('canvas'),
   context = canvas.getContext('2d'),
+  btnClear = document.querySelector('button.btnClear'),
   moveDistance = 10,
   height  = canvas.height,
   width = canvas.width,
@@ -88,7 +89,12 @@ function keyPress(event) {
   }
 }
 
+function clearCanvas() {
+  context.clearRect(0, 0, width, height);
+}
+
 window.addEventListener('keydown', keyPress);
+btnClear.addEventListener('click', clearCanvas);
 
 //Visibilidade Menu
 $(document).ready(function(e){
