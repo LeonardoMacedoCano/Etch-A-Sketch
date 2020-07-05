@@ -93,6 +93,17 @@ function clearCanvas() {
   context.clearRect(0, 0, width, height);
 }
 
+function downloadImage(data, filename) {
+  var a = document.getElementById('arquivo');
+  a.href = data;
+  a.download = filename;
+}
+
+function saveImage() {
+  var dataURL = canvas.toDataURL();
+  downloadImage(dataURL, 'image.png');
+}
+
 window.addEventListener('keydown', keyPress);
 btnClear.addEventListener('click', clearCanvas);
 
